@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://memories-mern-sumana.herokuapp.com",
+  baseURL: "https://memories-app-t2z1.onrender.com",
 });
 
 //localhost:3001
