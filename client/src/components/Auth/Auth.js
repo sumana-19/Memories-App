@@ -10,9 +10,7 @@ import {
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import Input from "./Input";
-import Icon from "./icon";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { signin, signup } from "../../actions/auth";
 import jwt_decode from "jwt-decode";
@@ -56,34 +54,6 @@ const Auth = () => {
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
-  };
-
-  const googleSuccess = async (res) => {
-    // console.log("res:", res);
-
-    const decoded= jwt_decode(res.credential);    //Decoding JWT
-
-
-    const {name, picture, sub} = decoded;
-
-    const result = decoded;
-    const token = res?.credential;
-
-    try {
-      //const userID = api.getUserIdFromGoogleToken(googleToken)
-      // OR
-      //const userToken = api.getTokenFromGoogleToken(googleToken)
-      dispatch({ type: "AUTH", data: { result, token } });
-
-      history.push("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const googleFailure = (error) => {
-    console.log(error);
-    console.log("Google Sign In was unsuccessful.Try again later.");
   };
 
   return (
@@ -143,11 +113,7 @@ const Auth = () => {
           >
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
-          <GoogleLogin
-            onSuccess={googleSuccess}
-            onFailure={googleFailure}
-            state_cookie_domain="same-origin-allow-popups"
-          />
+
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>
