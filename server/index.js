@@ -3,13 +3,12 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-dotenv.config()
+dotenv.config();
 
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 
 const app = express();
-
 
 app.use(bodyParser.json({ limit: "30mb", extended: true })); //basically tells the system that we wanna use json
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true })); //parses data from forms
@@ -22,7 +21,7 @@ app.get("/", (req, res) => {
   res.send("Hello to Memories API!");
 });
 
-const DB = process.env.DB_URL || "mongodb://localhost:27017/rest";
+const DB = process.env.DB_URL || "mongodb://mongo:27017/rest";
 const PORT = process.env.PORT || 3001;
 
 mongoose

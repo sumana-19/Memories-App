@@ -18,7 +18,8 @@ export const signin = async (req, res) => {
       existingUser.password
     ); //compares the old and new password
 
-    if (!isPasswordCorrect) return res.status(400).json("Invalid credentials.");
+    if (!isPasswordCorrect)
+      return res.status(400).json({ message: "Invalid credentials." });
 
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },

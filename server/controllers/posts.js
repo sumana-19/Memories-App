@@ -95,8 +95,10 @@ export const createComment = async (req, res) => {
 };
 
 export const updatePost = async (req, res) => {
-  const { id: _id } = req.params; //we renamed id as _id
+  const { id: _id } = req.params; //We renamed id as _id
   const post = req.body;
+
+  console.log("Post id from backend update:",_id);
 
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send("No post with that id");

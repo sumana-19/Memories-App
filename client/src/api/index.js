@@ -5,6 +5,7 @@ const API = axios.create({
 });
 
 //localhost:3001
+//https://memories-app-t2z1.onrender.com
 
 //For sending the token to the middleware
 API.interceptors.request.use((req) => {

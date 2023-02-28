@@ -14,6 +14,7 @@ import {
 } from "../constants/actionTypes";
 
 export default (state = { isLoading: true, posts: [] }, action) => {
+  
   const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
     case START_LOADING:
